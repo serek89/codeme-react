@@ -1,11 +1,12 @@
-import PlayerComponent from "./PlayerComponent/PlayerComponent";
+
+import PlayerComponent from "../PlayerComponent/PlayerComponent";
 import TournamentControler from "./TournamentControler/TournamentControler";
 
 const CreateTournament = () => {
   return (
     <>
       <TournamentControler />
-      <PlayerComponent />
+      <PlayerComponent/>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import Player from "../Model/Player";
 
 export const TournamentContext = createContext({
     name: '',
@@ -13,10 +14,16 @@ const TournamentProvider = (props) => {
     const [players, setPlayers] = useState([]);
 
     const value = {
-        name,
+        name: 'Testowy',
         setName,
-        players,
-        setPlayers
+        players: [
+            new Player(1, 'Asia'),
+            new Player(2, 'Kasia'),
+            new Player(3, 'Basia'),
+            new Player(4, 'Anka'),
+        ],
+        setPlayers,
+        isStarted: true
     }
 
     return (

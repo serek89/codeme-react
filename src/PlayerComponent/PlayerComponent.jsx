@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { TournamentContext } from "../../TournamentProvider/TournamentProvider";
+import Player from "../Model/Player";
+import { TournamentContext } from "../TournamentProvider/TournamentProvider";
 
 const PlayerComponent = () => {
     const tournamentContext = useContext(TournamentContext);
@@ -8,7 +9,7 @@ const PlayerComponent = () => {
         let nameImput = document.querySelector('input[id=playerName]');
         tournamentContext.setPlayers([
             ...tournamentContext.players,
-            { name: nameImput.value }
+            new Player(tournamentContext.players.length+1, nameImput.value)
         ]);
         nameImput.value = '';
     }
@@ -24,12 +25,13 @@ const PlayerComponent = () => {
         <>
             <input type="text" id="playerName" placeholder="Nazwa gracza" onKeyDown={handleKeyDown}/>
             <button id="saveTournamentName" onClick={addPlayer}>Dodaj</button>
+            <hr/>
         </>);
     }
 
     const playerRow = (index, player) => {
         return (
-            <tr>
+            <tr key={index}>
                 <td>{ index + 1 }.</td>
                 <td>{ player.name }</td>
             </tr>);
@@ -37,8 +39,7 @@ const PlayerComponent = () => {
 
     return (
         <div className="box"> 
-            { addForm() }
-            <hr/>
+            { !tournamentContext.isStarted && addForm() }
             <table>
                 <thead>
                 <tr>
