@@ -4,24 +4,23 @@ import { TournamentContext } from "../TournamentProvider/TournamentProvider";
 
 const RoundComponent = () => {
     const tournamentContext = useContext(TournamentContext);
-    const [paringList, setParinglist] = useState([]);
+    const players = [...tournamentContext.players];
+    // const [paringList, setParinglist] = useState([]);
 
-    useEffect(()=>{
-        const players = [...tournamentContext.players];
-        while (players.length > 0) {
-            let playerOne = players.shift();
-            let playerTwo = players.shift();
-            setParinglist([...paringList,
-                "a"
-            ]);
-        } 
-    }, []);
-
-    console.log(paringList);
+    // useEffect(()=>{
+    //     while (players.length > 0) {
+    //         let playerOne = players.shift();
+    //         let playerTwo = players.shift();
+    //         console.log("One:", playerOne);
+    //         console.log("Two:", playerTwo);
+    //         setParinglist([...paringList, {one: playerOne, two: playerTwo}]);
+    //     } 
+    // }, []);
 
     return (
         <div className="box">
-            { paringList.map((id, paring) => {return(<>{id}</>)}) }
+            <ParingComponent paring={  {one: players[0], two: players[1]} } />
+            <ParingComponent paring={  {one: players[2], two: players[3]} } />
         </div>
     );
 

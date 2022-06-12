@@ -33,7 +33,8 @@ const PlayerComponent = () => {
         return (
             <tr key={index}>
                 <td>{ index + 1 }.</td>
-                <td>{ player.name }</td>
+                <td>{ player.name } (id: { player.id })</td>
+                <td>{ player.wins }</td>
             </tr>);
     }
 
@@ -45,6 +46,7 @@ const PlayerComponent = () => {
                 <tr>
                     <th>l.p.</th>
                     <th>Nazwa</th>
+                    <th>Zwycięstwa</th>
                 </tr>
                 </thead>
                 <tbody>
